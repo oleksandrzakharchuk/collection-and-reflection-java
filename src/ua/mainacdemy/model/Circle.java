@@ -22,7 +22,21 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI*radius*radius;
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Shape obj = (Shape) o;
+        if (this.getArea() < obj.getArea()) {
+            return -1;
+        } else if (this.getArea() > obj.getArea()) {
+            return 1;
+        } else {
+            return 0;
+        }
+       // Shape obj = (Shape) o;
+        //return Double.compare(this.getArea(), obj.getArea());
     }
 }
 

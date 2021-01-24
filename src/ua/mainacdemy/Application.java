@@ -2,27 +2,108 @@ package ua.mainacdemy;
 
 
 import ua.mainacdemy.model.Circle;
+import ua.mainacdemy.model.Shape;
 import ua.mainacdemy.model.Triangle;
 import ua.mainacdemy.model.Square;
 
+import javax.management.Query;
+import java.util.*;
+
 public class Application {
     public static void main(String[] args) {
-        Circle circle =  new Circle(15);
-        Circle circle1 = new Circle(20);
-        Circle circle2 = new Circle(30);
-        Circle circle3 = new Circle(40);
+        Circle circle1 = new Circle(41);
+        Circle circle2 = new Circle(38);
 
-        Square square=new Square(15);
-        Square square1=new Square(20);
-        Square square2=new Square(30);
-        Square square3=new Square(40);
+        Square square1 = new Square(23);
+        Square square2 = new Square(19);
 
-        Triangle triangle=new Triangle(15,10);
-        Triangle triangle1=new Triangle(15,20);
-        Triangle triangle2=new Triangle(15,30);
-        Triangle triangle3=new Triangle(15,40);
+        Triangle triangle1 = new Triangle(48, 28);
+        Triangle triangle2 = new Triangle(34, 11);
 
+      /*  Circle[]circles=new Circle[4];
+        circle[0]=circle1;*/
+
+        //List-java utils
+        //
+        //ArrayList<Circle>circles=new ArrayList<>();
+        //circles.add(circle);
+        //LinkedList<Circle>circles1=new LinkedList<>();
+
+        List<Shape> shapeList = new ArrayList<>();
+        shapeList.add(circle1);
+        shapeList.add(square1);
+        shapeList.add(triangle1);
+        shapeList.add(circle2);
+        shapeList.add(square2);
+        shapeList.add(triangle2);
+        shapeList.add(circle1);
+        shapeList.add(circle1);
+        shapeList.add(circle1);
+
+        System.out.println("List size is " + shapeList.size());
+
+        //shapes.get(0).getArea();
+
+        //Set
+        //   Set<Shape> shapeSet=new HashSet<>();
+        Set<Shape> sortedShapeSet = new TreeSet<>();
+
+        sortedShapeSet.add(circle1);
+        sortedShapeSet.add(square1);
+        sortedShapeSet.add(triangle1);
+        sortedShapeSet.add(circle2);
+        sortedShapeSet.add(square2);
+        sortedShapeSet.add(triangle2);
+        sortedShapeSet.add(circle1);
+        sortedShapeSet.add(circle1);
+        sortedShapeSet.add(circle1);
+
+        System.out.println("Set size is " + sortedShapeSet.size());
+
+        for (Shape shape : sortedShapeSet) {
+            System.out.println("Shape has area " + shape.getArea() + " and is " + shape.getClass().getSimpleName());
+        }
+        // Queue
+
+        Queue<Shape> shapeQueue = new PriorityQueue<>();
+        shapeQueue.add(triangle1);
+        shapeQueue.add(square1);
+        shapeQueue.add(circle1);
+        shapeQueue.add(triangle2);
+        shapeQueue.add(square2);
+        shapeQueue.add(circle2);
+
+        for (Shape shape : shapeQueue) {
+            System.out.println("Shape has area " + shape.getArea() + " and is " + shape.getClass().getSimpleName());
+        }
+
+
+        System.out.println("Queue size  is " + shapeQueue.size());
+        Shape shapeFromQueue = shapeQueue.peek();//извлекает обект но не
+        // убирает его из очереди, считывает обект
+        System.out.println("The first shape area  is " + shapeFromQueue.getArea());
+        System.out.println("Queue size  is " + shapeQueue.size());
+
+        shapeFromQueue = shapeQueue.poll();//Извлекает обект из коллекции
+        // и смещает коллекцию на одну ячейку влево
+        System.out.println("The first shape area  is " + shapeFromQueue.getArea());
+        System.out.println("Queue size  is " + shapeQueue.size());
+
+        shapeFromQueue = shapeQueue.poll();//Извлекает обект из коллекции
+        //shapeFromQueue = shapeQueue.peek();//извлекает обект но не
+        // убирает его из очереди, считывает обект
+        System.out.println("The first shape area  is " + shapeFromQueue.getArea());
+        System.out.println("Queue size  is " + shapeQueue.size());
     }
 }
+
+//Нашел причину почему в Set не добавлялся элемент.
+// В основе HashSet лежит HashMap и элементы по
+// хешкоду попадают в определенную ячейку набора.
+// Поскольку хешкоды разные, то и элементы в наборе уникальные.Т
+// огда как в TreeSet в основе TreeMap и элементы
+// попадают по данным сортировки, в данном случае по
+// значению единственного метода в интерфейсе - площадь.
+// И увы, это значение не уникальное у меня
 
 
