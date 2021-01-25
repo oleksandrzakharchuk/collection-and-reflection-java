@@ -42,10 +42,49 @@ public class Application {
 
         System.out.println("List size is " + shapeList.size());
 
+        TreeSet<Shape> set = new TreeSet(shapeList);
+        System.out.println("Maximum value of list is: " + set.last().getArea());
+        System.out.println("Minimum value of list is: " + set.first().getArea());
+
+
+        //System.out.println(Collections.max(shapeList.getClass().getSimpleName());
+        // System.out.println(Collections.min(shapeList));
+
+
+
+
+       /* Collections.sort(shapeList);
+        System.out.println(shapeList.get(0));
+        System.out.println(shapeList.get(shapeList.size() - 1));*/
+
+        for (Shape shape : shapeList) {
+            System.out.println("Shape has area  " + shape.getArea() + " is " + shape.getClass().getSimpleName());
+
+            /*Collections.sort(shapeList);
+            System.out.println(shapeList.get(0));
+            System.out.println(shapeList.get(shapeList.size() - 1));*/
+
+            //int minArray = Collections.min(Arrays.asList(arr));
+
+           /* Comparable minList = Collections.min(shapeList);
+             System.out.println("Minimum value of list is: "
+                  + set.);*/
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
         //shapes.get(0).getArea();
 
         //Set
-        //   Set<Shape> shapeSet=new HashSet<>();
+     /*   //   Set<Shape> shapeSet=new HashSet<>();
         Set<Shape> sortedShapeSet = new TreeSet<>();
 
         sortedShapeSet.add(circle1);
@@ -60,8 +99,11 @@ public class Application {
 
         System.out.println("Set size is " + sortedShapeSet.size());
 
+
+
         for (Shape shape : sortedShapeSet) {
             System.out.println("Shape has area " + shape.getArea() + " and is " + shape.getClass().getSimpleName());
+
         }
         // Queue
 
@@ -94,9 +136,10 @@ public class Application {
         // убирает его из очереди, считывает обект
         System.out.println("The first shape area  is " + shapeFromQueue.getArea());
         System.out.println("Queue size  is " + shapeQueue.size());
+
     }
 }
-
+*/
 //Нашел причину почему в Set не добавлялся элемент.
 // В основе HashSet лежит HashMap и элементы по
 // хешкоду попадают в определенную ячейку набора.
